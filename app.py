@@ -2,23 +2,6 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 from streamlit_extras.metric_cards import style_metric_cards
-import locale
-import locale
-import os
-
-try:
-    # Definir localidade como padrão do sistema (pode evitar o erro)
-    locale.setlocale(locale.LC_ALL, '')
-except locale.Error:
-    # Se a localidade padrão não for suportada, use o en_US.UTF-8
-    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
-
-# Definir o local para o Brasil
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
-
-# Função para formatar valores em reais
-def formatar_valor(valor):
-    return locale.currency(valor, grouping=True)
 
                            
 # Layout
@@ -51,8 +34,8 @@ else:
     df_pagamentos = df_pagamentos[df_pagamentos['OBRA'] == selectbox_obra]
 
 # Métricas
-valor_orcamento = formatar_valor(df_selected['VALOR ESTIMADO'].sum())
-valor_contratado = formatar_valor(df_selected['VALOR CONTRATADO'].sum())
+valor_orcamento = (df_selected['VALOR ESTIMADO'].sum())
+valor_contratado = (df_selected['VALOR CONTRATADO'].sum())
 qtd_obras = df_selected['OBRA'].nunique()
 
 c1, c2, c3 = st.columns(3)
