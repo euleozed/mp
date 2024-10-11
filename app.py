@@ -3,6 +3,15 @@ import streamlit as st
 import plotly.express as px
 from streamlit_extras.metric_cards import style_metric_cards
 import locale
+import locale
+import os
+
+try:
+    # Definir localidade como padrão do sistema (pode evitar o erro)
+    locale.setlocale(locale.LC_ALL, '')
+except locale.Error:
+    # Se a localidade padrão não for suportada, use o en_US.UTF-8
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 # Definir o local para o Brasil
 locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
